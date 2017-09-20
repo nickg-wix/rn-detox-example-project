@@ -12,8 +12,7 @@
 
 ### Step 1: Npm install
 
-* Make sure you're in folder `examples/demo-react-native`.
-* Run `npm install`.
+* Run `npm install` in project root folder.
 
 ## To test Release build of your app
 ### Step 2: Build 
