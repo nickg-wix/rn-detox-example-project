@@ -43,22 +43,23 @@ class example extends Component {
 
 
   render() {
-    if (this.state.greeting) return this.renderAfterButton();
+    if (this.state.greeting === 'Robot Selector') return this.renderRobotSelector();
+    if (this.state.greeting === 'Card') return this.renderCard();
     return (
       <View testID='welcome' style={{flex: 1, paddingTop: 20, justifyContent: 'center', alignItems: 'center'}}>
         <Text style={{fontSize: 25, marginBottom: 30}}>
           Welcome
         </Text>
-        <TouchableOpacity testID='hello_button' onPress={this.onButtonPress.bind(this, 'Hello')}>
-          <Text style={{color: 'blue', marginBottom: 20}}>Say Hello</Text>
+        <TouchableOpacity testID='hello_button' onPress={this.onButtonPress.bind(this, 'Robot Selector')}>
+          <Text style={{color: 'blue', marginBottom: 20}}>Robot Selector</Text>
         </TouchableOpacity>
-        <TouchableOpacity testID='world_button' onPress={this.onButtonPress.bind(this, 'World')}>
-          <Text style={{color: 'blue', marginBottom: 20}}>Say World</Text>
+        <TouchableOpacity testID='card_button' onPress={this.onButtonPress.bind(this, 'Card')}>
+          <Text style={{color: 'blue', marginBottom: 20}}>User Card</Text>
         </TouchableOpacity>
       </View>
     );
   }
-  renderAfterButton() {
+  renderRobotSelector() {
 
     const showGoodRobot = () => (
       <Text testID='robot_selector_good_indicator' style={{ fontSize:40, marginTop: 40, height:60, textAlign: 'center', color: 'green'}}>{this.state.robot}</Text>
@@ -88,6 +89,42 @@ class example extends Component {
 
       </View>
     );
+  }
+  
+  renderCard(){
+      
+      const userCard = {
+          "id": 5,
+          "name": "Chelsey Dietrich",
+          "username": "Kamren",
+          "email": "Lucio_Hettinger@annie.ca",
+          "address": {
+              "street": "Skiles Walks",
+              "suite": "Suite 351",
+              "city": "Roscoeview",
+              "zipcode": "33263",
+              "geo": {
+                  "lat": "-31.8129",
+                  "lng": "62.5342"
+              }
+          },
+          "phone": "(254)954-1289",
+          "website": "demarco.info",
+          "company": {
+              "name": "Keebler LLC",
+              "catchPhrase": "User-centric fault-tolerant solution",
+              "bs": "revolutionize end-to-end systems"
+          }
+      }
+      
+      return (
+        <View style={{ flex: 1, marginTop: 70, paddingLeft:10, paddingRight:10}}>
+            <Text testID='user_name' style={{ fontSize:24 }}>{userCard.name}</Text>
+            <Text testID='user_email' style={{ fontSize:12, paddingTop:10 }}>{userCard.email}</Text>
+            <Text testID='user_phone' style={{ fontSize:12,  paddingTop:10 }}>{userCard.phone}</Text>
+            <Text testID='user_website' style={{ fontSize:12,  paddingTop:10 }}>{userCard.website}</Text>
+        </View>
+      )
   }
 
   renderRow(rowData, that){
