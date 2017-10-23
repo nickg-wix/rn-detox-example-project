@@ -1,0 +1,6 @@
+global.__DEV__ = true;
+require('babel-polyfill');
+require('babel-register')({
+  presets: ['import-export'],
+  plugins: ['transform-object-rest-spread']
+});
